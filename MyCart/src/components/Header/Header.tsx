@@ -6,7 +6,7 @@ const Header = () => {
     let [userSearch, setUserSearch] = useState('');
     return (
         <>
-            <View style={styles.headerContainer}>
+            <View style={styles.logoContainer}>
                 <Image
                     style={styles.logo}
                     source={{
@@ -14,7 +14,7 @@ const Header = () => {
                     }}
                 />
             </View>
-            <View>
+            <View style={styles.buttonsContainer}>
                 <TouchableHighlight>
                     <Text>Inicio</Text>
                 </TouchableHighlight>
@@ -30,17 +30,24 @@ const Header = () => {
 }
 
 const styles = StyleSheet.create({
-    headerContainer: {
+    logoContainer: {
         display: 'flex',
         flexDirection: 'row',
         alignSelf: 'center',
-        marginTop: hp('5%')
+        marginTop: hp('1%'),
+    },
+    buttonsContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignSelf: 'flex-end',
+        marginBottom: hp('5%'),
+        padding: hp('1%')
     },
     logo: {
         height: hp('5.4%'),
         width: wp('9%'),
         marginTop: hp('1.5%'),
-        marginLeft: - wp('10%')
+        marginLeft: - wp('35%')
     }
 })
 
