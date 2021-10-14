@@ -1,0 +1,6 @@
+export default {
+    LOAD_CART: 'LOAD_CART',
+    DELETE_FROM_CART: 'DELETE_FROM_CART',
+    UPDATE_CART: 'UPDATE_CART',
+    ERROR: 'ERROR'
+}

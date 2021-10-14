@@ -15,13 +15,13 @@ const Header = () => {
                 />
             </View>
             <View style={styles.buttonsContainer}>
-                <TouchableHighlight>
+                <TouchableHighlight style={styles.button}>
                     <Text>Inicio</Text>
                 </TouchableHighlight>
-                <TouchableHighlight>
+                <TouchableHighlight style={styles.button}>
                     <Text>Contacto</Text>
                 </TouchableHighlight>
-                <TouchableHighlight>
+                <TouchableHighlight style={styles.button}>
                     <Text>Nuestro Blog</Text>
                 </TouchableHighlight>      
             </View>
@@ -48,6 +48,9 @@ const styles = StyleSheet.create({
         width: wp('9%'),
         marginTop: hp('1.5%'),
         marginLeft: - wp('35%')
+    },
+    button: {
+        marginRight: wp('5%')
     }
 })
 

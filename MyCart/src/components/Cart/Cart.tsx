@@ -1,8 +1,16 @@
-import React, {useState} from 'react';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import React, {useEffect, useState} from 'react';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {View, StyleSheet, TouchableHighlight, Text} from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadCart } from '../../redux/actions/actionCreators';
 
 const Cart = () => {
+    const items = useSelector((store: any) => store.cart);
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(loadCart());
+    }, [items]);
+    console.log(items)
     return (
         <>
             <View style={styles.titleContainer}>
