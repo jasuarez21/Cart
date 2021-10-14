@@ -12,7 +12,7 @@ export function loadCart(): any {
         });
       } catch (error) {
         dispatch({
-          type: actionTypes.LOAD_CART,
+          type: actionTypes.ERROR,
         });
       }
     }
