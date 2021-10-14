@@ -6,13 +6,14 @@ function cartReducer(cart : any = [], action: any) {
       return action.items
 
     case actionTypes.DELETE_FROM_CART:
-      const itemIndexDelete = cart
-      .findIndex((item: any) => action.moto._id === item._id);
+      const itemIndexDelete = cart.data?.stores.data[0].relationships.items
+      .findIndex((item: any) => action.item.brand === item.attributes.brand);
   
     if (cart[itemIndexDelete].quantity > 1) {
+      console.log(cart)
       cart[itemIndexDelete] = {
         ...cart[itemIndexDelete],
-        quantity: cart[itemIndexDelete].quantity - 1
+        quantity: cart[itemIndexDelete].attributes.quantity - 1
       };
       return [...cart];
     }
