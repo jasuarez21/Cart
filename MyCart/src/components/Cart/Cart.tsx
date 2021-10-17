@@ -51,18 +51,18 @@ const Cart = () => {
                     }
                     )
             }
+            <View>
+                {
+                    <Text style={styles.messageInfo}>{items.data?.messages[0].message}</Text>
+                }
+            </View>
             <View style={styles.resumePriceContainer}>
                 <Text style={styles.titlePrice}>Resumen del pedido</Text>
                 <Text>Total de los productos(IVA INCLUIDO) {totalPrice.toFixed(2)} €</Text>
                 <Text>Total de envío (imp. excl.) {items.data?.attributes.estimated_shipping_costs} €</Text>
-                <Text>Total sin IVA {totalPriceWithoutTax} €</Text>
+                <Text>Total sin IVA {totalPriceWithoutTax.toFixed(2)} €</Text>
                 <Text>Total de impuestos {(totalPrice - totalPriceWithoutTax).toFixed(2)} €</Text>
                 <Text>Total a pagar {totalPrice.toFixed(2)} €</Text>
-            </View>
-            <View>
-                {
-                    <Text style={styles.messageInfo}>{items.data.messages[0].message}</Text>
-                }
             </View>
             <View style={styles.formContainer}>
                 <Text style={styles.titleForm}>Crea tu cuenta</Text>

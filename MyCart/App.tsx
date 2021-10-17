@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  StyleSheet
-} from 'react-native';
 import Header from './src/components/Header/Header';
 import Cart from './src/components/Cart/Cart';
 import { Provider } from 'react-redux';
@@ -17,7 +14,5 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-})
 
 export default App;

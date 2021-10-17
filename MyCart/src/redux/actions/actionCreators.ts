@@ -24,10 +24,3 @@ export function loadCart(): any {
       item,
     };
   }
-  
-  export function updateCart(item: any): any {
-    return {
-      type: actionTypes.UPDATE_CART,
-      item,
-    };
-  }

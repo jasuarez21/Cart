@@ -15,9 +15,7 @@ function cartReducer(cart : any = [], action: any) {
       }
       cart.data.stores.data[0].relationships.items.splice(cart.data.stores.data[0].relationships.items.indexOf(action.item), 1);
     return {...cart};
-
-    case actionTypes.UPDATE_CART:
-      return [];
+    
     default:
       return cart;
   }
