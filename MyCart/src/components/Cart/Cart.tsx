@@ -34,6 +34,7 @@ const Cart = () => {
                         console.log(totalPrice)
                         return ( <View style={styles.itemContainer}>
                             <Image
+                             style={styles.photo}
                              source={{
                                 uri: item.attributes.image_url,
                             }}/>
@@ -77,6 +78,11 @@ const Cart = () => {
     )
 }
 const styles = StyleSheet.create({
+    photo: {
+        marginLeft: wp('3%'),
+        width: wp('5%'),
+        height: hp('10%')
+    },
     titleContainer: {
         display: 'flex',
         flexDirection: 'row',
@@ -93,10 +99,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         borderBottomWidth: 1,
-        marginTop: hp('3%')
+        marginTop: hp('3%'),
+        width: wp('120%')
     },
     subtitle: {
-        marginLeft: wp('4%')
+        marginLeft: wp('7%')
     },
     itemContainer: {
         display: 'flex',
@@ -107,7 +114,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         justifyContent: 'flex-end',
         marginTop: hp('2%'),
-        borderRadius: 15
+        borderRadius: 15,
+        marginLeft: wp('10%')
     },
     attribute: {
         marginLeft: hp('5%'),
