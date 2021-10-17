@@ -9,6 +9,7 @@
 
 <h3>How tu run this app</h3>
 ! The project needs to have Android Studio or XCode installed!</br>
+Alert: This project is only for Android (not for Xcode)
 
 1- Download the project</br>
 2- Open project in your code editor</br>
