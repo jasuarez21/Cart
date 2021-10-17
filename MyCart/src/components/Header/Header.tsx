@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {View, StyleSheet, Image, TouchableHighlight, Text} from 'react-native';
 
 const Header = () => {
-    let [userSearch, setUserSearch] = useState('');
     return (
         <>
             <View style={styles.logoContainer}>

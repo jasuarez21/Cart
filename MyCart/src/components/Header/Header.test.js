@@ -3,9 +3,6 @@ import { render } from '@testing-library/react-native';
 import ConfigureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import Header from './Header';
-import {jest} from '@jest/globals';
-
-jest.useFakeTimers();
 
 jest.mock('react-native-responsive-screen')
 

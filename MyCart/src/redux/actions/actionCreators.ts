@@ -2,7 +2,12 @@ import axios from 'axios';
 import actionTypes from './actionTypes';
 import { Dispatch } from 'redux';
 
-export function loadCart(): any {
+interface deleteAction {
+  type: string,
+  item: string
+}
+
+export function loadCart(){
     return async (dispatch: Dispatch) => {
         try {   
         const {data} = await axios.get('http://demo0915487.mockable.io/cart');
@@ -18,7 +23,7 @@ export function loadCart(): any {
     }
   }
   
-  export function deleteFromCart(item: any): any {
+  export function deleteFromCart(item: string): deleteAction {
     return {
       type: actionTypes.DELETE_FROM_CART,
       item,
