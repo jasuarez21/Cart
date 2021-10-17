@@ -9,7 +9,7 @@ const Header = () => {
                 <Image
                     style={styles.logo}
                     source={{
-                        uri: "https://i.postimg.cc/W4pH9FN9/icons8-github-50.png",
+                        uri: "https://s3-eu-west-1.amazonaws.com/tpd/logos/55ae5cd70000ff0005813d4e/0x0.png",
                     }}
                 />
             </View>
@@ -32,8 +32,7 @@ const styles = StyleSheet.create({
     logoContainer: {
         display: 'flex',
         flexDirection: 'row',
-        alignSelf: 'center',
-        marginTop: hp('1%'),
+        alignSelf: 'center'
     },
     buttonsContainer: {
         display: 'flex',
@@ -43,9 +42,8 @@ const styles = StyleSheet.create({
         padding: hp('1%')
     },
     logo: {
-        height: hp('5.4%'),
-        width: wp('9%'),
-        marginTop: hp('1.5%'),
+        height: hp('10%'),
+        width: wp('18%'),
         marginLeft: - wp('35%')
     },
     button: {
