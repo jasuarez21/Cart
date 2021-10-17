@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import {View, StyleSheet, TouchableHighlight, Text, Image} from 'react-native';
+import {View, StyleSheet, TouchableHighlight, Text, Image, TextInput, ScrollView} from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFromCart, loadCart } from '../../redux/actions/actionCreators';
 
@@ -13,7 +13,7 @@ const Cart = () => {
       dispatch(loadCart());
     }, []);
     return (
-        <View>
+        <ScrollView>
             <View style={styles.titleContainer}>
                 <Text style={styles.cartTitle}>Resumen de tu cesta</Text>
                 <TouchableHighlight>
@@ -59,7 +59,19 @@ const Cart = () => {
                 <Text>Total de impuestos {(totalPrice - totalPriceWithoutTax).toFixed(2)} €</Text>
                 <Text>Total a pagar {totalPrice.toFixed(2)} €</Text>
             </View>
-        </View>
+            <View>
+                {
+                    <Text style={styles.messageInfo}>{items.data.messages[0].message}</Text>
+                }
+            </View>
+            <View style={styles.formContainer}>
+                <Text style={styles.titleForm}>Crea tu cuenta</Text>
+                <TextInput  style={styles.input}  placeholder="Nombre" />
+                <TextInput  style={styles.input} placeholder="Apellidos" />
+                <TextInput  style={styles.input} placeholder="Correo electrónico" />
+                <TextInput  style={styles.input} placeholder="Contaseña" />
+            </View>
+        </ScrollView>
     )
 }
 const styles = StyleSheet.create({
@@ -118,7 +130,33 @@ const styles = StyleSheet.create({
     titlePrice: {
         marginBottom: hp('3%'),
         fontSize: hp('1.8%')
-    }
+    },
+    messageInfo: {
+        alignSelf: 'center',
+        marginTop: hp('1%')
+    },
+    formContainer: {
+        marginTop: hp('2%'),
+        alignSelf: 'center',
+        borderWidth: 1,
+        padding: hp('2%'),
+        borderRadius: 25,
+        marginBottom: hp('5%')
+    },
+    titleForm: {
+        textTransform: 'uppercase',
+        fontSize: hp('2%')
+    },
+    input: {
+        backgroundColor: 'white',
+        alignSelf: 'center',
+        marginBottom: hp('1.2'),
+        marginTop: hp('1.5%'),
+        marginRight: wp('15%'),
+        paddingLeft: wp('5%'),
+        borderRadius: 5,
+        width: wp('60%')
+      },
 })
 
 export default Cart;
