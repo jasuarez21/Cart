@@ -6,19 +6,16 @@ function cartReducer(cart : any = [], action: any) {
       return action.items
 
     case actionTypes.DELETE_FROM_CART:
-      const itemIndexDelete = cart.data?.stores.data[0].relationships.items
-      .findIndex((item: any) => action.item.brand === item.attributes.brand);
-  
-    if (cart[itemIndexDelete].quantity > 1) {
-      console.log(cart)
-      cart[itemIndexDelete] = {
-        ...cart[itemIndexDelete],
-        quantity: cart[itemIndexDelete].attributes.quantity - 1
-      };
-      return [...cart];
-    }
-    cart.splice(cart.indexOf(action.item), 1);
-    return [...cart];
+      const itemIndexDelete = cart.data?.stores.data[0].relationships.items.findIndex((item: any) => action.item === item.attributes.brand);
+
+      if (cart.data.stores.data[0].relationships.items[itemIndexDelete].attributes.quantity > 1) {
+        cart.data.stores.data[0].relationships.items[itemIndexDelete].attributes.quantity = 
+        (cart.data.stores.data[0].relationships.items[itemIndexDelete].attributes.quantity - 1)
+        console.log(cart)
+        return {...cart};
+      }
+      cart.data.stores.data[0].relationships.items.splice(cart.data.stores.data[0].relationships.items.indexOf(action.item), 1);
+    return {...cart};
 
     case actionTypes.UPDATE_CART:
       return [];

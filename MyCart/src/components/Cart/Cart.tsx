@@ -99,8 +99,7 @@ const styles = StyleSheet.create({
         marginLeft: hp('1%'),
         marginRight: hp('1%'),
         width: wp('16%'),
-        height: hp('5%'),
-        borderWidth: 1
+        height: hp('5%')
     }
 })
 
