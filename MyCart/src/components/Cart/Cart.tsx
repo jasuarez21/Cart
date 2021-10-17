@@ -7,7 +7,8 @@ import { deleteFromCart, loadCart } from '../../redux/actions/actionCreators';
 const Cart = () => {
     const items = useSelector((store: any) => store.cart);
     const dispatch = useDispatch();
-    let precioTotal: number = 0;
+    let totalPrice: number = 0;
+    let totalPriceWithoutTax: number = 0;
     useEffect(() => {
       dispatch(loadCart());
     }, []);
@@ -27,13 +28,14 @@ const Cart = () => {
             {
                     items.data?.stores.data[0].relationships.items.map((item: any) => 
                     {
-                        precioTotal = precioTotal + (item.attributes.current_unit_price*item.attributes.quantity)
-                        console.log(precioTotal)
+                        totalPrice = totalPrice + (item.attributes.current_unit_price*item.attributes.quantity)
+                        totalPriceWithoutTax = (totalPrice - item.attributes.price_without_tax)
+                        console.log(totalPrice)
                         return ( <View style={styles.itemContainer}>
-                            {/* <Image
+                            <Image
                              source={{
                                 uri: item.attributes.image_url,
-                            }}/> */}
+                            }}/>
                              <Text style={styles.attribute}>{item.attributes.brand}</Text>
                              <Text style={styles.attribute}>{item.attributes.current_unit_price}€</Text>
                              <Text style={styles.attribute}>{item.attributes.quantity}</Text>
@@ -42,21 +44,20 @@ const Cart = () => {
                                onPress={() =>
                                 dispatch(deleteFromCart(item.attributes.brand))
                               }>
-                                <Text>Eliminar X</Text>
+                                <Text>Eliminar</Text>
                             </TouchableHighlight>
                          </View>
                        )
                     }
                     )
             }
-            <View>
-                <Text>Resumen del pedido</Text>
-                <Text>Total items {precioTotal} €</Text>
-                <Text>Total de los productos(IVA INCLUIDO) {items.data?.attributes.total_vat_taxes} €</Text>
-                <Text>Total de envío (imp. excl.) {items.data?.attributes.estimated_shipping_costs_without_tax} €</Text>
-                <Text>Total sin IVA {items.data?.attributes.total_vat_taxes} €</Text>
-                <Text>Total de impuestos {items.data?.attributes.total_vat_taxes} €</Text>
-                <Text>Total a pagar {items.data?.attributes.total_price} €</Text>
+            <View style={styles.resumePriceContainer}>
+                <Text style={styles.titlePrice}>Resumen del pedido</Text>
+                <Text>Total de los productos(IVA INCLUIDO) {totalPrice.toFixed(2)} €</Text>
+                <Text>Total de envío (imp. excl.) {items.data?.attributes.estimated_shipping_costs} €</Text>
+                <Text>Total sin IVA {totalPriceWithoutTax} €</Text>
+                <Text>Total de impuestos {(totalPrice - totalPriceWithoutTax).toFixed(2)} €</Text>
+                <Text>Total a pagar {totalPrice.toFixed(2)} €</Text>
             </View>
         </View>
     )
@@ -69,37 +70,54 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     cartTitle: {
-        marginRight: wp('15%')
+        marginRight: wp('13%'),
+        textTransform: 'uppercase',
+        fontSize: hp('3%')
     },
     subtitleContainer: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         borderBottomWidth: 1,
         marginTop: hp('3%')
     },
     subtitle: {
-        marginRight: wp('3%')
+        marginLeft: wp('4%')
     },
     itemContainer: {
         display: 'flex',
         flexDirection: 'row',
         borderWidth: 1,
         height: hp('10%'),
-        width: wp('100%'),
+        width: wp('80%'),
         alignSelf: 'center',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        marginTop: hp('2%'),
+        borderRadius: 15
     },
     attribute: {
-        marginLeft: hp('4%'),
+        marginLeft: hp('5%'),
         marginTop: hp('3%')
     },
     buttonDelete: {
-        marginTop: hp('1%'),
+        marginTop: hp('-0.1%'),
         marginLeft: hp('1%'),
-        marginRight: hp('1%'),
+        marginRight: hp('-2%'),
         width: wp('16%'),
         height: hp('5%')
+    },
+    resumePriceContainer:{
+        borderWidth: 1,
+        marginTop: hp('3%'),
+        width: wp('70%'),
+        height: hp('20%'),
+        alignSelf: 'center',
+        borderRadius: 15,
+        padding: wp('3%')
+    },
+    titlePrice: {
+        marginBottom: hp('3%'),
+        fontSize: hp('1.8%')
     }
 })
 

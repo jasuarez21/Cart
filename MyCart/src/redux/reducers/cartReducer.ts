@@ -11,7 +11,6 @@ function cartReducer(cart : any = [], action: any) {
       if (cart.data.stores.data[0].relationships.items[itemIndexDelete].attributes.quantity > 1) {
         cart.data.stores.data[0].relationships.items[itemIndexDelete].attributes.quantity = 
         (cart.data.stores.data[0].relationships.items[itemIndexDelete].attributes.quantity - 1)
-        console.log(cart)
         return {...cart};
       }
       cart.data.stores.data[0].relationships.items.splice(cart.data.stores.data[0].relationships.items.indexOf(action.item), 1);
