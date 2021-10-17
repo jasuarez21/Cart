@@ -1,8 +1,9 @@
 import { Action } from '../../types/Action';
 import { Item } from '../../types/Item';
+import { Cart } from '../../types/Cart';
 import actionTypes from '../actions/actionTypes';
 
-function cartReducer(cart : any = [], action: Action) {
+function cartReducer(cart : Cart | any  = [], action: Action) {
   switch (action.type) {
     case actionTypes.LOAD_CART:
       return action.items

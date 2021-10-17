@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {View, StyleSheet, TouchableHighlight, Text, Image, TextInput, ScrollView} from 'react-native';
+import { Item } from '../../types/Item';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFromCart, loadCart } from '../../redux/actions/actionCreators';
 
@@ -26,7 +27,7 @@ const Cart = () => {
                 <Text style={styles.subtitle}>SUBTOTAL</Text>
             </View>
             {
-                    items.data?.stores.data[0].relationships.items.map((item: any) => 
+                    items.data?.stores.data[0].relationships.items.map((item: Item) => 
                     {
                         totalPrice = totalPrice + (item.attributes.current_unit_price*item.attributes.quantity)
                         totalPriceWithoutTax = (totalPrice - item.attributes.price_without_tax)
@@ -41,7 +42,8 @@ const Cart = () => {
                              <Text style={styles.attribute}>{item.attributes.quantity}</Text>
                              <Text style={styles.attribute}>{item.attributes.current_unit_price*item.attributes.quantity}€</Text>
                              <TouchableHighlight style={styles.buttonDelete}
-                               onPress={() =>
+                                testID='buttonDelete'
+                                onPress={() =>
                                 dispatch(deleteFromCart(item.attributes.brand))
                               }>
                                 <Text>Eliminar</Text>

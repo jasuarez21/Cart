@@ -23,4 +23,11 @@ describe('When invoked a Cart component', () => {
         const cart = render(<Provider store={store}><Cart /></Provider>)
         expect(cart).toMatchSnapshot()
     })
+    test('Should call a deletefromCart', async () => {
+        const { getByTestId } = render(<Provider store={store}><Cart /></Provider>);
+        const buttonDelete = getByTestId('buttonDelete');
+        const deleteFromCart = jest.fn();
+        await fireEvent.changeText(buttonDelete, deleteFromCart);
+        expect(actions.deleteFromCart).toHaveBeenCalled();
+    })
 })

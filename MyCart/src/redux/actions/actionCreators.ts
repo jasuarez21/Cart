@@ -1,13 +1,12 @@
 import axios from 'axios';
 import actionTypes from './actionTypes';
 import { Dispatch } from 'redux';
-
 interface deleteAction {
   type: string,
   item: string
 }
 
-export function loadCart(){
+export function loadCart() {
     return async (dispatch: Dispatch) => {
         try {   
         const {data} = await axios.get('http://demo0915487.mockable.io/cart');
